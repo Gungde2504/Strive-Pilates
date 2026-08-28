@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bronze-base:   #8B6914;
+  --color-bronze-bright: #A0792A;
+  --color-bronze-deep:   #6B4F0A;
+  --color-bronze-light:  #C4973E;
+  --color-bronze-pale:   #E8D5A8;
+  --color-ivory:         #F5F0EA;
+  --color-ivory-deeper:  #EDE5D8;
+  --color-warm-black:    #1A1208;
+  --color-warm-text:     #6B5E4A;
+  --color-dash-bg:       #F9FAFB;
+  --color-dash-border:   #E5E7EB;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+  --radius-card:  20px;
+  --radius-modal: 28px;
+  --radius-pill:  999px;
+  --shadow-neu: 8px 8px 20px #D9D1C5, -8px -8px 20px #FFFFFF;
+  --shadow-neu-inset: inset 4px 4px 10px #D9D1C5, inset -4px -4px 10px #FFFFFF;
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0 }
+  to   { background-position:  200% 0 }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92) }
+  to   { opacity: 1; transform: scale(1) }
+}
+
+@layer utilities {
+  .neu-raised { box-shadow: 8px 8px 20px #D9D1C5, -8px -8px 20px #FFFFFF; }
+  .neu-inset  { box-shadow: inset 4px 4px 10px #D9D1C5, inset -4px -4px 10px #FFFFFF; }
+  .btn-bronze {
+    background: linear-gradient(145deg, #7A5C0E 0%, #C4973E 45%, #A0792A 65%, #6B4F0A 100%);
+    box-shadow: 4px 4px 14px rgba(107,79,10,0.45), -2px -2px 8px rgba(255,255,255,0.60),
+                inset 0 1px 0 rgba(255,240,180,0.35);
+    color: #FFFFFF;
+  }
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C4973E, #F0D080, #C4973E, transparent);
+  }
+  /* ── Animations ─────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+.animate-fade-up   { animation: fadeInUp   0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-fade-left { animation: fadeInLeft 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-fade-right{ animation: fadeInRight 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-scale-in  { animation: scaleIn    0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+.opacity-0 { opacity: 0; }
+
+/* ── Hover transitions ───────────────────── */
+.hover-lift {
+  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 12px 16px 32px #C8BFB4, -8px -8px 20px #FFFFFF !important;
+}
+
+.hover-bronze {
+  transition: all 0.2s ease;
+}
+.hover-bronze:hover {
+  box-shadow: 4px 4px 18px rgba(107,79,10,0.55), -2px -2px 8px rgba(255,255,255,0.60),
+              inset 0 1px 0 rgba(255,240,180,0.35), 0 0 28px rgba(196,151,62,0.25) !important;
+  transform: translateY(-2px);
+}
+}
+/* ============================================================
+   MOBILE RESPONSIVE — Strive Pilates Bali
+   Tambahkan di bagian bawah src/index.css
+   ============================================================ */
+
+/* ── Responsive grid helpers ─────────────────── */
+@media (max-width: 768px) {
+
+  /* Grid 2 kolom → 1 kolom */
+  .grid-2-col {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Grid 4 kolom → 2 kolom */
+  .grid-4-col {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  /* Grid 3 kolom → 1 kolom */
+  .grid-3-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Timeline zigzag → linear */
+  .timeline-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Hide desktop-only elements */
+  .desktop-only { display: none !important; }
+
+  /* Show mobile-only elements */
+  .mobile-only { display: block !important; }
+
+  /* Padding adjustments */
+  .section-pad { padding: 56px 20px !important; }
+  .section-pad-sm { padding: 40px 20px !important; }
+}
+
+@media (max-width: 480px) {
+  .grid-4-col {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* ── Bronze button for auth pages (dark background) ─────────────────────── */
+.btn-bronze-auth {
+  background: linear-gradient(145deg, #7A5C0E 0%, #C4973E 45%, #A0792A 65%, #6B4F0A 100%);
+  box-shadow: 4px 4px 14px rgba(107,79,10,0.45), inset 0 1px 0 rgba(255,240,180,0.35);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-bronze-auth:hover:not(:disabled) {
+  box-shadow: 4px 4px 18px rgba(107,79,10,0.60), -2px -2px 8px rgba(255,255,255,0.10),
+              inset 0 1px 0 rgba(255,240,180,0.35);
+  transform: translateY(-2px);
+}
+.btn-bronze-auth:disabled {
+  background: rgba(139,105,20,0.5);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
