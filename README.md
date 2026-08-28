@@ -249,4 +249,4 @@ docker compose exec laravel-api php artisan test --filter=BookingTest
 
 ---
 
-**Tugas Akhir — S1 Sistem Informasi — ITB STIKOM Bali — 2025**
+
